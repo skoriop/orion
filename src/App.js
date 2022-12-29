@@ -1,5 +1,21 @@
 import logo from './logo.svg';
+import axios from 'axios';
 import './App.css';
+
+function getSecret() {
+  axios.get('/.netlify/functions/key')
+    .then(function (response) {
+      // handle success
+      console.log(response);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .finally(function () {
+      // always executed
+    });
+}
 
 function App() {
   return (
@@ -10,7 +26,7 @@ function App() {
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <p>
-          SOME_SECRET value is "{process.env.REACT_APP_SOME_SECRET}"
+          Running function {getSecret()}
         </p>
         <a
           className="App-link"
