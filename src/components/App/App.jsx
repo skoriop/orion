@@ -1,11 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 
 import Login from '../Login/Login';
 import Dashboard from '../Dashboard/Dashboard';
 
 function App() {
 
-    const [token, setToken] = useState("");
     useEffect(() => {
         const hash = window.location.hash;
         var t = window.localStorage.getItem('token');
@@ -13,20 +12,17 @@ function App() {
         {
             // Access token has arrived!
             t = hash.substring(1).split('&').find(i => i.startsWith('access_token')).split('=')[1];
-            window.location.hash = '';
             window.localStorage.setItem('token', t);
+            // Refresh
+            window.location.reload();
         }
-        setToken(t);
+        if (hash) window.location.hash = '';
     }, []);
-    console.log(token);
-    if (token === "")
-    {
-        return <Login />;
-    }
-    else
-    {
+
+    if (window.localStorage.getItem('token') !== null) 
         return <Dashboard />;
-    }
+    else 
+        return <Login />;
 }
 
 export default App;
