@@ -10,7 +10,7 @@ function App() {
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <p>
-          {process.env.SOME_SECRET}
+          SOME_SECRET value is "{process.env.REACT_APP_SOME_SECRET}"
         </p>
         <a
           className="App-link"
