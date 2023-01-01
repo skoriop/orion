@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 
-import {callAPI} from '../Dashboard/Dashboard';
+import {callAPI} from '../../helper.js';
 
 function Profile() {
     const [data, setData] = useState({});

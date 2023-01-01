@@ -5,5 +5,7 @@ import App from './components/App/App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-	<App />
+	<React.StrictMode>
+		<App height="100vh"/>
+	</React.StrictMode>
 );
